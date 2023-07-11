@@ -21,7 +21,7 @@ function App() {
 
   return (
     <div className="w-screen h-screen bg-gray-200">
-      <div className="w-[45rem] h-[40rem] flex flex-col items-center justify-center gap-4 rounded-lg shadow-2xl bg-white center">
+      <div className="w-[45rem] h-[40rem] rounded-lg p-6 shadow-2xl bg-white center">
         <Routes>
           <Route path="/" element={<Signin />} />
           <Route path="/signup" element={<Signup />} />

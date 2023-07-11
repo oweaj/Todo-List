@@ -3,6 +3,9 @@
 @tailwind utilities;
 
 @layer components {
+  .contentsStyle {
+    @apply w-full h-full flex flex-col items-center justify-center;
+  }
   .center {
     @apply absolute top-1/2 left-1/2 translate-x-[-50%] translate-y-[-50%];
   }
