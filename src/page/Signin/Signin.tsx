@@ -10,7 +10,7 @@ const Signin = () => {
   const password = useInput();
 
   return (
-    <>
+    <div className="contentsStyle">
       <Title />
       <form>
         <div className="formGap">
@@ -24,7 +24,7 @@ const Signin = () => {
           </div>
         </div>
       </form>
-    </>
+    </div>
   );
 };
 

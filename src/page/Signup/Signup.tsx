@@ -14,7 +14,7 @@ const Signup = () => {
   }, [email.state, password.state, nickName.state]);
 
   return (
-    <>
+    <div className="contentsStyle">
       <Title />
       <form>
         <div className="formGap">
@@ -24,7 +24,7 @@ const Signup = () => {
           <Button title="회원가입" id={"signup-button"} active={active} />
         </div>
       </form>
-    </>
+    </div>
   );
 };
 
