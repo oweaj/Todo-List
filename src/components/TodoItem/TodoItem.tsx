@@ -21,7 +21,7 @@ const TodoItem = ({ item }: itemText) => {
   return (
     <li className="relative w-full h-16 flex flex-row items-center gap-4 px-2 text-lg border-b border-gray-400">
       {icon === "minus" ? <AiOutlineMinusCircle className="w-6 h-6 cursor-pointer" onClick={isToggle} /> : <BsCheckCircleFill className="w-6 h-6 text-blue-500 cursor-pointer" onClick={isToggle} />}
-      <span>{item}</span>
+      <span className={icon === "check" ? "text-gray-400" : ""}>{item}</span>
       <RxCross2 className="w-6 h-6 absolute right-3 cursor-pointer" onClick={isDelete} />
     </li>
   );
