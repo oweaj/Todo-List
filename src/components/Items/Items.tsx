@@ -1,4 +1,6 @@
-import React, { ChangeEvent } from "react";
+import React, { ChangeEvent, MouseEvent } from "react";
+import { useRecoilValue } from "recoil";
+import { checkPW } from "../../Atom/userAtom";
 
 interface inputInfo {
   title: string;
@@ -11,21 +13,23 @@ interface inputInfo {
 interface btnInfo {
   title: string;
   id: string;
+  onClick: (e: MouseEvent<HTMLButtonElement>) => void;
   active: boolean;
 }
 
 export const Input = ({ title, id, value, state, onChange }: inputInfo) => {
+  const passwordCheck = useRecoilValue(checkPW);
+
   return (
     <div className="w-96">
       <label htmlFor={id}>{title}</label>
       <div className="relative">
         <input
           required
-          type={id === "nickName" ? "text" : id}
+          type={id === "email" ? "email" : "password"}
           id={id}
-          data-testid={id}
           className="w-full h-12 pl-2 border border-gray-400 rounded-lg"
-          placeholder={id === "email" ? "email@email.com" : id === "password" ? "영문, 숫자, 특수문자 포함 8~15자" : "한글, 영문, 숫자 가능 3~8자"}
+          placeholder={id === "email" ? "email@email.com" : "영문, 숫자, 특수문자 포함 8~15자"}
           onChange={onChange}
           value={value}
         />
@@ -34,8 +38,8 @@ export const Input = ({ title, id, value, state, onChange }: inputInfo) => {
             ? "이메일 형식이 올바르지 않습니다."
             : id === "password" && value && !state
             ? "비밀번호 형식이 올바르지 않습니다."
-            : id === "nickName" && value && !state
-            ? "닉네임 형식이 올바르지 않습니다."
+            : id === "pwCheck" && value && !passwordCheck
+            ? "비밀번호가 일치하지 않습니다."
             : ""}
         </span>
       </div>
@@ -43,14 +47,9 @@ export const Input = ({ title, id, value, state, onChange }: inputInfo) => {
   );
 };
 
-export const Button = ({ title, id, active }: btnInfo) => {
+export const Button = ({ title, id, onClick, active }: btnInfo) => {
   return (
-    <button
-      type="submit"
-      id={id}
-      className={`w-96 h-12 mt-1 rounded-lg text-lg text-white ${title === "로그인" || active ? "bg-blue-400" : "bg-gray-300"}`}
-      disabled={title === "회원가입" ? !active : active}
-    >
+    <button type="submit" id={id} className={`w-96 h-12 mt-1 rounded-lg text-lg text-white ${active ? "bg-blue-400" : "bg-gray-300"}`} onClick={onClick} disabled={!active}>
       {title}
     </button>
   );
