@@ -1,23 +1,27 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { onAuthStateChanged } from "firebase/auth";
 import { Route, Routes } from "react-router-dom";
+import { authService } from "./firebase";
 import NotFound from "./page/NotFound/NotFound";
 import Signin from "./page/Signin/Signin";
 import Signup from "./page/Signup/Signup";
-import Todo from "./page/Todo/Todo";
-import { initializeApp } from "firebase/app";
+import { Todo } from "./page/Todo/Todo";
+import { useSetRecoilState } from "recoil";
+import { user } from "./Atom/userAtom";
 
 function App() {
-  const firebaseConfig = {
-    apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
-    authDomain: process.env.REACT_APP_FIREBASE_AUTH_DOMAIN,
-    projectId: process.env.REACT_APP_FIREBASE_PROJECTID,
-    storageBucket: process.env.REACT_APP_FIREBASE_STORAGEBUCKET,
-    messagingSenderId: process.env.REACT_APP_FIREBASE_MESSAGING_SENDER_ID,
-    appId: process.env.REACT_APP_FIREBASE_APP_ID,
-  };
+  const setUserInfo = useSetRecoilState(user);
 
-  const app = initializeApp(firebaseConfig);
-  console.log(app);
+  useEffect(() => {
+    onAuthStateChanged(authService, async (user) => {
+      if (user) {
+        setUserInfo({
+          email: user.email,
+          uid: user.uid,
+        });
+      }
+    });
+  }, []);
 
   return (
     <div className="w-screen h-screen bg-gray-200">
