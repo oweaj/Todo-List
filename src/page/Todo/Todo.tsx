@@ -1,7 +1,7 @@
 import React, { useState, KeyboardEvent, useEffect } from "react";
 import Title from "../../components/Header/Header";
 import TodoItem from "../../components/TodoItem/TodoItem";
-import { addDoc, collection } from "firebase/firestore";
+import { addDoc, collection, getDocs, orderBy, query } from "firebase/firestore";
 import { authService, db } from "../../firebase";
 import { signOut } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
@@ -28,11 +28,18 @@ export const Todo = () => {
       state: false,
       id: new Date().getTime(),
     });
+
     setTodoValue("");
   };
 
   useEffect(() => {
-    setTodoList(todo);
+    const sortTodo = async () => {
+      const todoBox = collection(db, `user/${isUser.uid}/todo`);
+      const sortItem = await getDocs(query(todoBox, orderBy("id", "asc")));
+      const todo = sortItem.docs.map((item) => item.data());
+      setTodoList(todo);
+    };
+    sortTodo();
   }, [todo]);
 
   const logout = () => {
