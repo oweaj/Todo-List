@@ -1,6 +1,6 @@
 # 📚 Todo-List
 
-React와 Typescript 학습 목적으로 제작한 todolist 입니다.
+간단한 todolist를 만든 경험의 바탕으로 React, Typescript, Firebase를 활용하여 제작하고 배포한 업그레이드 버전 todolist 입니다.
 
 ### 🛠️ 사용 기술
 
