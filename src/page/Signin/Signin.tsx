@@ -27,7 +27,6 @@ const Signin = () => {
     try {
       const provider = new GoogleAuthProvider();
       await signInWithPopup(authService, provider);
-      alert("로그인 되었습니다.");
       navigate("/todo");
     } catch (error) {
       alert("로그인에 실패했습니다.");
