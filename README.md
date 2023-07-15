@@ -32,6 +32,7 @@ React와 Typescript 학습 목적으로 제작한 todolist 입니다.
 ### ✅ Firebase 확인
 
 - 회원가입, 로그인 부분
+  
   ![스크린샷 2023-07-15 오후 9 26 09](https://github.com/oweaj/Todo-List/assets/101049520/bd141ef0-c977-4289-b946-be5874e988a6)
 
   <br/>
@@ -43,4 +44,4 @@ React와 Typescript 학습 목적으로 제작한 todolist 입니다.
 
 ---
 
-#### 👉 [Todo-List 바로가기 ](https://oweaj-todolist.netlify.app/)
+### 👉 [Todo-List 바로가기 ](https://oweaj-todolist.netlify.app/)
