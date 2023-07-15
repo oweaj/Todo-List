@@ -4,12 +4,14 @@ React와 Typescript 학습 목적으로 제작한 todolist 입니다.
 
 ### 🛠️ 사용 기술
 
+<p>
 <img src="https://img.shields.io/badge/React-61DAFB?style=flat-square&logo=React&logoColor=black">
 <img src="https://img.shields.io/badge/Typescript-3178C6?style=flat-square&logo=Typescript&logoColor=white">
 <img src="https://img.shields.io/badge/tailwindcss-white?style=flat-square&logo=tailwindcss&logoColor=61DAFB">
 <img src="https://img.shields.io/badge/React Router-black?style=flat-square&logo=ReactRouter&logoColor=CA4245">
 <img src="https://img.shields.io/badge/Firebase-orange?style=flat-square&logo=firebase&logoColor=#FFCA28">
 <img src="https://img.shields.io/badge/netlify-white?style=flat-square&logo=netlify&logoColor=00C7B7">
+</p>
 
 ---
 
@@ -31,10 +33,13 @@ React와 Typescript 학습 목적으로 제작한 todolist 입니다.
 
 - 회원가입, 로그인 부분
   ![스크린샷 2023-07-15 오후 9 26 09](https://github.com/oweaj/Todo-List/assets/101049520/bd141ef0-c977-4289-b946-be5874e988a6)
+
   <br/>
+
 - todo 컬렉션 문서
+
   ![스크린샷 2023-07-15 오후 9 26 24](https://github.com/oweaj/Todo-List/assets/101049520/ae10df83-5f87-40b0-8dbc-2a352f2f3f02)
-  ![스크린샷 2023-07-15 오후 9 27 15](https://github.com/oweaj/Todo-List/assets/101049520/ec7c9f21-49d3-4ee2-81ff-ef1be0385ef3)
+  ![스크린샷 2023-07-15 오후 9 52 47](https://github.com/oweaj/Todo-List/assets/101049520/d9bf2611-1ba4-4cd8-9d8e-d49c9eb80478)
 
 ---
 
