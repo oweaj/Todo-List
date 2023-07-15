@@ -44,4 +44,4 @@ React와 Typescript 학습 목적으로 제작한 todolist 입니다.
 
 ---
 
-#### 👉 [Todo-List 바로가기 ](https://oweaj-todolist.netlify.app/)
+### 👉 [Todo-List 바로가기 ](https://oweaj-todolist.netlify.app/)
