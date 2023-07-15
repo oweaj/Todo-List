@@ -1,46 +1,41 @@
-# Getting Started with Create React App
+# 📚 Todo-List
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+React와 Typescript 학습 목적으로 제작한 todolist 입니다.
 
-## Available Scripts
+### 🛠️ 사용 기술
 
-In the project directory, you can run:
+<img src="https://img.shields.io/badge/React-61DAFB?style=flat-square&logo=React&logoColor=black">
+<img src="https://img.shields.io/badge/Typescript-3178C6?style=flat-square&logo=Typescript&logoColor=white">
+<img src="https://img.shields.io/badge/tailwindcss-white?style=flat-square&logo=tailwindcss&logoColor=61DAFB">
+<img src="https://img.shields.io/badge/React Router-black?style=flat-square&logo=ReactRouter&logoColor=CA4245">
+<img src="https://img.shields.io/badge/Firebase-orange?style=flat-square&logo=firebase&logoColor=#FFCA28">
+<img src="https://img.shields.io/badge/netlify-white?style=flat-square&logo=netlify&logoColor=00C7B7">
 
-### `npm start`
+---
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+### 🔎 구현 설명
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+- 회원가입과 로그인을 통해 계정별 Todo-List를 관리할 수 있습니다.
+- Firebase Auth 기능을 이용한 google 계정으로 로그인이 가능합니다.
+- 작성한 리스트에 대해 추가, 가져오기, 수정, 삭제 등이 가능합니다.
 
-### `npm test`
+---
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### 🖥️ 전체적인 구성
 
-### `npm run build`
+![todolist](https://github.com/oweaj/Todo-List/assets/101049520/18aafba2-3d02-4103-bce7-851d8cf64b05)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+---
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### ✅ Firebase 확인
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- 회원가입, 로그인 부분
+  ![스크린샷 2023-07-15 오후 9 26 09](https://github.com/oweaj/Todo-List/assets/101049520/bd141ef0-c977-4289-b946-be5874e988a6)
+  <br/>
+- todo 컬렉션 문서
+  ![스크린샷 2023-07-15 오후 9 26 24](https://github.com/oweaj/Todo-List/assets/101049520/ae10df83-5f87-40b0-8dbc-2a352f2f3f02)
+  ![스크린샷 2023-07-15 오후 9 27 15](https://github.com/oweaj/Todo-List/assets/101049520/ec7c9f21-49d3-4ee2-81ff-ef1be0385ef3)
 
-### `npm run eject`
+---
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+#### 👉 [Todo-List 바로가기 ](https://oweaj-todolist.netlify.app/)
