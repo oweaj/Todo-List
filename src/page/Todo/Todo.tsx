@@ -7,7 +7,6 @@ import { signOut } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
 import { useRecoilValue } from "recoil";
 import { user } from "../../Atom/userAtom";
-import { useCollectionData } from "react-firebase-hooks/firestore";
 
 export interface todoInfo {
   todo: string;
@@ -20,7 +19,6 @@ export const Todo = () => {
   const [todoList, setTodoList] = useState<any>([]);
   const isUser = useRecoilValue(user);
   const navigate = useNavigate();
-  const [todo] = useCollectionData(collection(db, `user/${isUser.uid}/todo`));
 
   const addTodo = async () => {
     await addDoc(collection(db, `user/${isUser.uid}/todo`), {
@@ -40,7 +38,7 @@ export const Todo = () => {
       setTodoList(todo);
     };
     sortTodo();
-  }, [todo]);
+  }, [todoList]);
 
   const logout = () => {
     signOut(authService);
