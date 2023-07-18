@@ -1,6 +1,8 @@
 # 📚 Todo-List
 
-간단한 todolist를 만든 경험의 바탕으로 React, Typescript, Firebase를 활용하여 제작하고 배포한 업그레이드 버전 todolist 입니다.
+React로 간단한 todolist를 만든 바탕으로 Typescript, Firebase를 추가로 활용하여 제작하고 배포한 업그레이드 버전 todolist 입니다.
+
+배포 : [https://oweaj-todolist.netlify.app/](https://oweaj-todolist.netlify.app/)
 
 ### 🛠️ 사용 기술
 
@@ -41,7 +43,3 @@
 
   ![스크린샷 2023-07-15 오후 9 26 24](https://github.com/oweaj/Todo-List/assets/101049520/ae10df83-5f87-40b0-8dbc-2a352f2f3f02)
   ![스크린샷 2023-07-15 오후 9 52 47](https://github.com/oweaj/Todo-List/assets/101049520/d9bf2611-1ba4-4cd8-9d8e-d49c9eb80478)
-
----
-
-### 👉 [Todo-List 바로가기 ](https://oweaj-todolist.netlify.app/)
