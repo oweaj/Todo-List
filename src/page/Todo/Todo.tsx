@@ -22,17 +22,17 @@ export const Todo = () => {
   const navigate = useNavigate();
 
   const addTodo = async () => {
+    if (todoValue === "") {
+      alert("빈 문장 입니다. 다시 입력해주세요.");
+      return;
+    }
+
     await addDoc(collection(db, `user/${isUser.uid}/todo`), {
       todo: todoValue,
       state: false,
       date: new Date().getTime(),
     });
     setTodoValue("");
-
-    if (todoValue === "") {
-      alert("빈 문장 입니다. 다시 입력해주세요.");
-      return;
-    }
   };
 
   const addEnter = (e: KeyboardEvent<HTMLInputElement>) => {
