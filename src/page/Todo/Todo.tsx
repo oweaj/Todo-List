@@ -1,7 +1,7 @@
 import React, { useState, KeyboardEvent, useEffect } from "react";
 import Title from "../../components/Header/Header";
 import TodoItem from "../../components/TodoItem/TodoItem";
-import { addDoc, collection, getDocs, orderBy, query } from "firebase/firestore";
+import { addDoc, collection, deleteDoc, doc, onSnapshot, orderBy, query, updateDoc, where } from "firebase/firestore";
 import { authService, db } from "../../firebase";
 import { signOut } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
@@ -12,11 +12,12 @@ export interface todoInfo {
   todo: string;
   state: boolean;
   id: string;
+  date: number;
 }
 
 export const Todo = () => {
   const [todoValue, setTodoValue] = useState<string>("");
-  const [todoList, setTodoList] = useState<any>([]);
+  const [todoList, setTodoList] = useState<todoInfo[]>([]);
   const isUser = useRecoilValue(user);
   const navigate = useNavigate();
 
@@ -24,32 +25,48 @@ export const Todo = () => {
     await addDoc(collection(db, `user/${isUser.uid}/todo`), {
       todo: todoValue,
       state: false,
-      id: new Date().getTime(),
+      date: new Date().getTime(),
     });
-
     setTodoValue("");
-  };
 
-  useEffect(() => {
-    const sortTodo = async () => {
-      const todoBox = collection(db, `user/${isUser.uid}/todo`);
-      const sortItem = await getDocs(query(todoBox, orderBy("id", "asc")));
-      const todo = sortItem.docs.map((item) => item.data());
-      setTodoList(todo);
-    };
-    sortTodo();
-  }, [todoList]);
-
-  const logout = () => {
-    signOut(authService);
-    alert("로그아웃 되었습니다.");
-    navigate("/");
+    if (todoValue === "") {
+      alert("빈 문장 입니다. 다시 입력해주세요.");
+      return;
+    }
   };
 
   const addEnter = (e: KeyboardEvent<HTMLInputElement>) => {
     if (e.key === "Enter" && e.nativeEvent.isComposing === false) {
       addTodo();
     }
+  };
+
+  const isFinish = async (item: todoInfo) => {
+    await updateDoc(doc(db, `user/${isUser.uid}/todo`, item.id), {
+      state: !item.state,
+    });
+  };
+
+  const isDelete = async (id: string) => {
+    await deleteDoc(doc(db, `user/${isUser.uid}/todo`, id));
+  };
+
+  useEffect(() => {
+    const q = query(collection(db, `user/${isUser.uid}/todo`), orderBy("date", "asc"));
+    const unsubscribe = onSnapshot(q, (querySnapshot) => {
+      let todoArr: todoInfo[] = [];
+      querySnapshot.forEach((doc) => {
+        todoArr.push({ id: doc.id, ...doc.data() } as todoInfo);
+      });
+      setTodoList(todoArr);
+    });
+    return () => unsubscribe();
+  }, []);
+
+  const logout = () => {
+    signOut(authService);
+    alert("로그아웃 되었습니다.");
+    navigate("/");
   };
 
   return (
@@ -70,9 +87,9 @@ export const Todo = () => {
           추가하기
         </button>
       </div>
-      <ul className="w-[30rem] h-full overflow-y-auto">
+      <ul className="w-[30rem] h-[26rem] overflow-y-auto">
         {todoList && todoList.length ? (
-          <div className="relative flex flex-row items-center gap-5 text-sm px-2">
+          <div className="relative flex flex-row items-center gap-3 text-sm px-1">
             <span>상태</span>
             <span>할 일 제목</span>
             <div className="absolute right-3">
@@ -81,8 +98,7 @@ export const Todo = () => {
             </div>
           </div>
         ) : null}
-
-        {todoList && todoList.map((item: todoInfo, index: number) => <TodoItem key={index} item={item} />)}
+        {todoList && todoList.map((item: todoInfo, index) => <TodoItem key={index} item={item} isFinish={isFinish} isDelete={isDelete} />)}
       </ul>
     </div>
   );
