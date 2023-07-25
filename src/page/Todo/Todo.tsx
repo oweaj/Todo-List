@@ -61,7 +61,7 @@ export const Todo = () => {
       setTodoList(todoArr);
     });
     return () => unsubscribe();
-  }, []);
+  }, [isUser.uid]);
 
   const logout = () => {
     signOut(authService);
