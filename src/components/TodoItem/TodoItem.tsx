@@ -40,7 +40,7 @@ const TodoItem = ({ item, isFinish, isDelete }: itemText) => {
             <BsPencilFill className="w-5 h-5" />
           </button>
         )}
-        <button type="button" onClick={() => isDelete(item.id)} disabled={item.state}>
+        <button type="button" onClick={() => isDelete(item.id)}>
           <RxCross2 className="w-6 h-6" />
         </button>
       </div>
