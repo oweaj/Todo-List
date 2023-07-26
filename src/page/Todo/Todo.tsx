@@ -1,7 +1,7 @@
 import React, { useState, KeyboardEvent, useEffect } from "react";
 import Title from "../../components/Header/Header";
 import TodoItem from "../../components/TodoItem/TodoItem";
-import { addDoc, collection, deleteDoc, doc, onSnapshot, orderBy, query, updateDoc, where } from "firebase/firestore";
+import { addDoc, collection, deleteDoc, doc, onSnapshot, orderBy, query, updateDoc } from "firebase/firestore";
 import { authService, db } from "../../firebase";
 import { signOut } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
@@ -20,6 +20,8 @@ export const Todo = () => {
   const [todoList, setTodoList] = useState<todoInfo[]>([]);
   const isUser = useRecoilValue(user);
   const navigate = useNavigate();
+  const date = new Date();
+  const weekday = ["일요일", "월요일", "화요일", "수요일", "목요일", "금요일", "토요일"];
 
   const addTodo = async () => {
     if (todoValue === "") {
@@ -30,7 +32,7 @@ export const Todo = () => {
     await addDoc(collection(db, `user/${isUser.uid}/todo`), {
       todo: todoValue,
       state: false,
-      date: new Date().getTime(),
+      date: date.getTime(),
     });
     setTodoValue("");
   };
@@ -69,12 +71,24 @@ export const Todo = () => {
     navigate("/");
   };
 
+  const check = todoList.filter((todo) => !todo.state).length;
+
+  const checkMsg = () => {
+    if (check <= 0) {
+      if (todoList.length > 0) return "오늘 할 일을 마치셨어요!!";
+      else return "📚 할 일을 추가해보세요.";
+    } else return `${check}개의 할 일이 남았습니다.`;
+  };
+
   return (
     <div className="h-full flex flex-col items-center gap-3">
       <button className="absolute top-5 right-5 w-[70px] h-8 border border-gray-500 rounded-lg hover:text-white hover:bg-red-400 hover:border-none" onClick={logout}>
         로그아웃
       </button>
-      <Title />
+      <div className="text-center text-gray-700 font-medium">
+        <p className="text-3xl mb-4">{`${date.getFullYear()}년 ${date.getMonth() + 1}월 ${date.getDate()}일 ${weekday[date.getDay()]}`}</p>
+        <span className="text-2xl text-green-500">{checkMsg()}</span>
+      </div>
       <div className="w-[30rem] flex flex-row justify-between gap-3">
         <input
           className="w-4/5 h-12 pl-2 border border-gray-500 rounded-lg"
