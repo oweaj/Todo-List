@@ -1,5 +1,4 @@
 import React, { useState, KeyboardEvent, useEffect } from "react";
-import Title from "../../components/Header/Header";
 import TodoItem from "../../components/TodoItem/TodoItem";
 import { addDoc, collection, deleteDoc, doc, onSnapshot, orderBy, query, updateDoc } from "firebase/firestore";
 import { authService, db } from "../../firebase";
@@ -22,6 +21,13 @@ export const Todo = () => {
   const navigate = useNavigate();
   const date = new Date();
   const weekday = ["일요일", "월요일", "화요일", "수요일", "목요일", "금요일", "토요일"];
+
+  useEffect(() => {
+    if (isUser.uid === null) {
+      alert("로그인 후 이용 가능합니다.");
+      navigate("/");
+    }
+  }, []);
 
   const addTodo = async () => {
     if (todoValue === "") {
