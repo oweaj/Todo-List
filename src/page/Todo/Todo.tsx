@@ -23,7 +23,7 @@ export const Todo = () => {
   const weekday = ["일요일", "월요일", "화요일", "수요일", "목요일", "금요일", "토요일"];
 
   useEffect(() => {
-    if (isUser.uid === null) {
+    if (!localStorage.getItem("uid")) {
       alert("로그인 후 이용 가능합니다.");
       navigate("/");
     }
@@ -74,6 +74,7 @@ export const Todo = () => {
   const logout = () => {
     signOut(authService);
     alert("로그아웃 되었습니다.");
+    localStorage.removeItem("uid");
     navigate("/");
   };
 
@@ -118,7 +119,9 @@ export const Todo = () => {
             </div>
           </div>
         ) : null}
-        {todoList && todoList.map((item: todoInfo, index) => <TodoItem key={index} item={item} isFinish={isFinish} isDelete={isDelete} />)}
+        {todoList.map((item: todoInfo, index) => (
+          <TodoItem key={index} item={item} isFinish={isFinish} isDelete={isDelete} />
+        ))}
       </ul>
     </div>
   );

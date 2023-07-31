@@ -15,6 +15,7 @@ function App() {
   useEffect(() => {
     onAuthStateChanged(authService, async (user) => {
       if (user) {
+        localStorage.setItem("uid", user.uid);
         setUserInfo({
           email: user.email,
           uid: user.uid,
